@@ -66,6 +66,7 @@
                 <h2>Nuestros Servicios</h2>
                 <div class="servicios">
                     <article class="carta electricos">
+                        <span class="card-tag">Diagnostico y ejecucion</span>
                         <h3>Servicios Electricos</h3>
                         <p>
                             Instalacion, mantenimiento y diagnostico electrico para hogares, comercios e industria.
@@ -74,6 +75,7 @@
                         <a class="btn-small" href="#contacto">Mas informacion</a>
                     </article>
                     <article class="carta productos">
+                        <span class="card-tag">Disponibilidad y suministro</span>
                         <h3>Productos Electricos</h3>
                         <p>
                             Venta de componentes electricos seleccionados por calidad y durabilidad:
@@ -82,6 +84,7 @@
                         <a class="btn-small" href="#contacto">Ver disponibilidad</a>
                     </article>
                     <article class="carta cortometrajes">
+                        <span class="card-tag">Concepto y produccion</span>
                         <h3>Cortometrajes</h3>
                         <p>
                             Desarrollo de piezas audiovisuales cortas para comunicar ideas, procesos y marcas,
@@ -153,5 +156,19 @@
             <p>&copy; 2026 ED.SOLUCIONES. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script>
+        const interactiveCards = document.querySelectorAll(".carta, .hero-metrics p, .proceso-grid article");
+
+        interactiveCards.forEach((card) => {
+            card.tabIndex = 0;
+            card.addEventListener("pointermove", (event) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width) * 100;
+                const y = ((event.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty("--spot-x", x + "%");
+                card.style.setProperty("--spot-y", y + "%");
+            });
+        });
+    </script>
 </body>
 </html>
